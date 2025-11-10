@@ -25,10 +25,15 @@ class AdministratorPanelProvider extends PanelProvider
         return $panel
             ->id('administrator')
             ->authGuard('administrator')
+            ->authMiddleware(['auth:administrator'])
             ->path('administrator')
+            ->authPasswordBroker('administrators')
             ->login()
+            ->passwordReset()
+            ->registration()
+            ->profile()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Cyan,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')

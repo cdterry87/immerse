@@ -26,9 +26,15 @@ class MemberPanelProvider extends PanelProvider
             ->default()
             ->id('member')
             ->authGuard('member')
+            ->authMiddleware(['auth:member'])
             ->path('member')
+            ->authPasswordBroker('members')
+            ->login()
+            ->passwordReset()
+            ->registration()
+            ->profile()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue,
             ])
             ->discoverResources(in: app_path('Filament/Member/Resources'), for: 'App\\Filament\\Member\\Resources')
             ->discoverPages(in: app_path('Filament/Member/Pages'), for: 'App\\Filament\\Member\\Pages')

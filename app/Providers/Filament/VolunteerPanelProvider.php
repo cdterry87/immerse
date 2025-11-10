@@ -25,9 +25,15 @@ class VolunteerPanelProvider extends PanelProvider
         return $panel
             ->id('volunteer')
             ->authGuard('volunteer')
+            ->authMiddleware(['auth:volunteer'])
             ->path('volunteer')
+            ->authPasswordBroker('volunteers')
+            ->login()
+            ->passwordReset()
+            ->registration()
+            ->profile()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Teal,
             ])
             ->discoverResources(in: app_path('Filament/Volunteer/Resources'), for: 'App\\Filament\\Volunteer\\Resources')
             ->discoverPages(in: app_path('Filament/Volunteer/Pages'), for: 'App\\Filament\\Volunteer\\Pages')

@@ -25,9 +25,15 @@ class ManagerPanelProvider extends PanelProvider
         return $panel
             ->id('manager')
             ->authGuard('manager')
+            ->authMiddleware(['auth:manager'])
             ->path('manager')
+            ->authPasswordBroker('managers')
+            ->login()
+            ->passwordReset()
+            ->registration()
+            ->profile()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Sky,
             ])
             ->discoverResources(in: app_path('Filament/Manager/Resources'), for: 'App\\Filament\\Manager\\Resources')
             ->discoverPages(in: app_path('Filament/Manager/Pages'), for: 'App\\Filament\\Manager\\Pages')
