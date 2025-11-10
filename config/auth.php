@@ -82,17 +82,17 @@ return [
         ],
 
         'members' => [
-            'driver' => 'active_eloquent',
+            'driver' => 'eloquent',
             'model' => App\Models\UserMember::class,
         ],
 
         'managers' => [
-            'driver' => 'active_eloquent',
+            'driver' => 'eloquent',
             'model' => App\Models\UserManager::class,
         ],
 
         'volunteers' => [
-            'driver' => 'active_eloquent',
+            'driver' => 'eloquent',
             'model' => App\Models\UserVolunteer::class,
         ],
     ],
