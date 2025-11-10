@@ -16,24 +16,28 @@ return new class extends Migration
             $table->foreignId('user_volunteer_id')->constrained('users_volunteers')->cascadeOnDelete();
             $table->boolean('accepted')->nullable();
             $table->primary(['event_id', 'user_volunteer_id']);
+            $table->timestamps();
         });
 
         Schema::create('events_members', function (Blueprint $table) {
             $table->foreignId('event_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_member_id')->constrained('users_members')->cascadeOnDelete();
             $table->primary(['event_id', 'user_member_id']);
+            $table->timestamps();
         });
 
         Schema::create('organizations_members', function (Blueprint $table) {
             $table->foreignId('organization_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_member_id')->constrained('users_members')->cascadeOnDelete();
             $table->primary(['organization_id', 'user_member_id']);
+            $table->timestamps();
         });
 
         Schema::create('organizations_volunteers', function (Blueprint $table) {
             $table->foreignId('organization_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_volunteer_id')->constrained('users_volunteers')->cascadeOnDelete();
             $table->primary(['organization_id', 'user_volunteer_id']);
+            $table->timestamps();
         });
     }
 
