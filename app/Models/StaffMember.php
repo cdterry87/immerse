@@ -13,6 +13,8 @@ class StaffMember extends Model implements HasMedia
 
     protected $guarded = [];
 
+    protected $table = 'staff_members';
+
     public function organization()
     {
         return $this->belongsTo(Organization::class);

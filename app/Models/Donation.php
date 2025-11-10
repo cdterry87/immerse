@@ -11,6 +11,8 @@ class Donation extends Model
 
     protected $guarded = [];
 
+    protected $table = 'donations';
+
     public function organization()
     {
         return $this->belongsTo(Organization::class);

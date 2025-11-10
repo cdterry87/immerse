@@ -13,6 +13,8 @@ class MediaSeries extends Model implements HasMedia
 
     protected $guarded = [];
 
+    protected $table = 'media_series';
+
     public function organization()
     {
         return $this->belongsTo(Organization::class);

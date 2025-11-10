@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UsersVolunteerUnavailableDate extends Model
+class UserVolunteerUnavailableDate extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
+
+    protected $table = 'users_volunteers_unavailable_dates';
 
     public function volunteer()
     {

@@ -11,6 +11,8 @@ class WebsiteSetting extends Model
 
     protected $guarded = [];
 
+    protected $table = 'website_settings';
+
     public function organization()
     {
         return $this->belongsTo(Organization::class);

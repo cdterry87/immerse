@@ -13,6 +13,8 @@ class Group extends Model implements HasMedia
 
     protected $guarded = [];
 
+    protected $table = 'groups';
+
     public function organization()
     {
         return $this->belongsTo(Organization::class);

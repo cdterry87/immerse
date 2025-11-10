@@ -8,6 +8,8 @@ class EventMember extends Model
 {
     protected $guarded = [];
 
+    protected $table = 'events_members';
+
     public function event()
     {
         return $this->belongsTo(Event::class);

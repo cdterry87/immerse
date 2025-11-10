@@ -13,6 +13,8 @@ class MediaSeriesItem extends Model implements HasMedia
 
     protected $guarded = [];
 
+    protected $table = 'media_series_items';
+
     public function mediaSeries()
     {
         return $this->belongsTo(MediaSeries::class);

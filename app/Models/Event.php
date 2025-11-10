@@ -11,6 +11,8 @@ class Event extends Model
 
     protected $guarded = [];
 
+    protected $table = 'events';
+
     public function organization()
     {
         return $this->belongsTo(Organization::class);

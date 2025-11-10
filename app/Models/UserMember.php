@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class UsersMember extends Authenticatable
+class UserMember extends Authenticatable
 {
     use HasFactory, Notifiable;
 
     protected $guard = 'member';
+
+    protected $table = 'users_members';
 
     protected $guarded = [];
 

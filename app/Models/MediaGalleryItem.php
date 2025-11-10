@@ -13,6 +13,8 @@ class MediaGalleryItem extends Model implements HasMedia
 
     protected $guarded = [];
 
+    protected $table = 'media_gallery_items';
+
     public function gallery()
     {
         return $this->belongsTo(MediaGallery::class, 'media_gallery_id');

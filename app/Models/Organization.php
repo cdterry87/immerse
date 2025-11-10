@@ -13,6 +13,8 @@ class Organization extends Model implements HasMedia
 
     protected $guarded = [];
 
+    protected $table = 'organizations';
+
     public function managers()
     {
         return $this->hasMany(UsersManager::class);

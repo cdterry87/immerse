@@ -11,6 +11,8 @@ class Team extends Model
 
     protected $guarded = [];
 
+    protected $table = 'teams';
+
     public function organization()
     {
         return $this->belongsTo(Organization::class);

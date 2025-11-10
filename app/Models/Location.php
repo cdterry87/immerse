@@ -11,6 +11,8 @@ class Location extends Model
 
     protected $guarded = [];
 
+    protected $table = 'locations';
+
     public function organization()
     {
         return $this->belongsTo(Organization::class);

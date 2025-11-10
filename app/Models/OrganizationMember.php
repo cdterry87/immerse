@@ -3,10 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class OrganizationMember extends Model
 {
+    use HasFactory;
+
     protected $guarded = [];
+
+    protected $table = 'organizations_members';
 
     public function organization()
     {

@@ -11,6 +11,8 @@ class AppSetting extends Model
 
     protected $guarded = [];
 
+    protected $table = 'app_settings';
+
     public function organization()
     {
         return $this->belongsTo(Organization::class);
