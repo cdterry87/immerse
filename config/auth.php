@@ -36,11 +36,27 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'administrator' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'administrators',
+        ],
+
+        'member' => [
+            'driver' => 'session',
+            'provider' => 'members',
+        ],
+
+        'manager' => [
+            'driver' => 'session',
+            'provider' => 'managers',
+        ],
+
+        'volunteer' => [
+            'driver' => 'session',
+            'provider' => 'volunteers',
         ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -60,15 +76,25 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'administrators' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => App\Models\UserAdministrator::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'members' => [
+            'driver' => 'active_eloquent',
+            'model' => App\Models\UserMember::class,
+        ],
+
+        'managers' => [
+            'driver' => 'active_eloquent',
+            'model' => App\Models\UserManager::class,
+        ],
+
+        'volunteers' => [
+            'driver' => 'active_eloquent',
+            'model' => App\Models\UserVolunteer::class,
+        ],
     ],
 
     /*
@@ -91,9 +117,21 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+        'members' => [
+            'provider' => 'members',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'managers' => [
+            'provider' => 'managers',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'volunteers' => [
+            'provider' => 'volunteers',
+            'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,
         ],
