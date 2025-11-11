@@ -13,6 +13,11 @@ class Team extends Model
 
     protected $table = 'teams';
 
+    public function getRouteKeyName(): string
+    {
+        return 'uuid';
+    }
+
     public function organization()
     {
         return $this->belongsTo(Organization::class);

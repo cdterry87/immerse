@@ -15,6 +15,11 @@ class MediaGalleryItem extends Model implements HasMedia
 
     protected $table = 'media_gallery_items';
 
+    public function getRouteKeyName(): string
+    {
+        return 'uuid';
+    }
+
     public function gallery()
     {
         return $this->belongsTo(MediaGallery::class, 'media_gallery_id');

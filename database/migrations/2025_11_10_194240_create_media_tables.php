@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('media_series', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->foreignId('organization_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->text('description')->nullable();
@@ -21,6 +22,7 @@ return new class extends Migration
 
         Schema::create('media_series_items', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->foreignId('media_series_id')->constrained()->cascadeOnDelete();
             $table->string('title');
             $table->string('speaker')->nullable();
@@ -31,6 +33,7 @@ return new class extends Migration
 
         Schema::create('media_galleries', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->foreignId('organization_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->text('description')->nullable();
@@ -39,6 +42,7 @@ return new class extends Migration
 
         Schema::create('media_gallery_items', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->foreignId('media_gallery_id')->constrained()->cascadeOnDelete();
             $table->string('caption')->nullable();
             $table->timestamps();

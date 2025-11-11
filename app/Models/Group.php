@@ -15,6 +15,11 @@ class Group extends Model implements HasMedia
 
     protected $table = 'groups';
 
+    public function getRouteKeyName(): string
+    {
+        return 'uuid';
+    }
+
     public function organization()
     {
         return $this->belongsTo(Organization::class);

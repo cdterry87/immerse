@@ -15,9 +15,14 @@ class Organization extends Model implements HasMedia
 
     protected $table = 'organizations';
 
+    public function getRouteKeyName(): string
+    {
+        return 'uuid';
+    }
+
     public function managers()
     {
-        return $this->hasMany(UsersManager::class);
+        return $this->hasMany(UserManager::class);
     }
 
     public function staffMembers()
@@ -67,12 +72,12 @@ class Organization extends Model implements HasMedia
 
     public function members()
     {
-        return $this->belongsToMany(UsersMember::class, 'organizations_members');
+        return $this->belongsToMany(UserMember::class, 'organizations_members');
     }
 
     public function volunteers()
     {
-        return $this->belongsToMany(UsersVolunteer::class, 'organizations_volunteers');
+        return $this->belongsToMany(UserVolunteer::class, 'organizations_volunteers');
     }
 
     public function websiteSettings()
@@ -83,5 +88,10 @@ class Organization extends Model implements HasMedia
     public function appSettings()
     {
         return $this->hasMany(AppSetting::class);
+    }
+
+    public function getCustomPathSegment(): string
+    {
+        return "organization/{$this->uuid}/images";
     }
 }

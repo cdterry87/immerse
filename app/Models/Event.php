@@ -13,6 +13,11 @@ class Event extends Model
 
     protected $table = 'events';
 
+    public function getRouteKeyName(): string
+    {
+        return 'uuid';
+    }
+
     public function organization()
     {
         return $this->belongsTo(Organization::class);

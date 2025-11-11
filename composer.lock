@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5aa88eed5ef85dc7114278a719ec5f63",
+    "content-hash": "6ea93ee86386ccee4ff66f9920bdef3e",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",

@@ -18,6 +18,11 @@ class UserManager extends Authenticatable
 
     protected $hidden = ['password', 'remember_token'];
 
+    public function getRouteKeyName(): string
+    {
+        return 'uuid';
+    }
+
     public function organization()
     {
         return $this->belongsTo(Organization::class);

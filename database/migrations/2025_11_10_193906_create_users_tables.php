@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('users_administrators', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
@@ -22,6 +23,7 @@ return new class extends Migration
 
         Schema::create('users_managers', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->foreignId('organization_id')->nullable()->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('email')->unique();
@@ -32,6 +34,7 @@ return new class extends Migration
 
         Schema::create('users_members', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
@@ -41,6 +44,7 @@ return new class extends Migration
 
         Schema::create('users_volunteers', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password')->nullable(); // may be null until invited

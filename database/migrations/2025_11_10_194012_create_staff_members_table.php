@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('staff_members', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->foreignId('organization_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->string('title')->nullable();

@@ -13,6 +13,11 @@ class Location extends Model
 
     protected $table = 'locations';
 
+    public function getRouteKeyName(): string
+    {
+        return 'uuid';
+    }
+
     public function organization()
     {
         return $this->belongsTo(Organization::class);

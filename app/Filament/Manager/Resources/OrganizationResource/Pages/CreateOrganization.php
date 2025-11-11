@@ -9,4 +9,11 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateOrganization extends CreateRecord
 {
     protected static string $resource = OrganizationResource::class;
+
+    protected function afterCreate(): void
+    {
+        $user = auth('manager')->user();
+        $user->organization_id = $this->record->id;
+        $user->save();
+    }
 }

@@ -17,6 +17,7 @@ class TeamRoleFactory extends Factory
     public function definition(): array
     {
         return [
+            'uuid' => $this->faker->uuid(),
             'team_id' => \App\Models\Team::factory(),
             'name' => $this->faker->jobTitle(),
             'description' => $this->faker->optional()->paragraph(),

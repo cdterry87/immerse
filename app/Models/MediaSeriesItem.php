@@ -15,6 +15,11 @@ class MediaSeriesItem extends Model implements HasMedia
 
     protected $table = 'media_series_items';
 
+    public function getRouteKeyName(): string
+    {
+        return 'uuid';
+    }
+
     public function mediaSeries()
     {
         return $this->belongsTo(MediaSeries::class);

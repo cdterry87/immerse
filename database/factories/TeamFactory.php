@@ -17,6 +17,7 @@ class TeamFactory extends Factory
     public function definition(): array
     {
         return [
+            'uuid' => $this->faker->uuid(),
             'organization_id' => \App\Models\Organization::factory(),
             'name' => $this->faker->company(),
             'description' => $this->faker->paragraph(),

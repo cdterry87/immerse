@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->foreignId('organization_id')->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->text('description')->nullable();
@@ -21,6 +22,7 @@ return new class extends Migration
 
         Schema::create('teams_roles', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->foreignId('team_id')->constrained('teams')->cascadeOnDelete();
             $table->string('name');
             $table->text('description')->nullable();

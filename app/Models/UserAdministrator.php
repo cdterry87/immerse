@@ -17,4 +17,9 @@ class UserAdministrator extends Authenticatable
     protected $guarded = [];
 
     protected $hidden = ['password', 'remember_token'];
+
+    public function getRouteKeyName(): string
+    {
+        return 'uuid';
+    }
 }

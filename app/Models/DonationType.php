@@ -13,6 +13,11 @@ class DonationType extends Model
 
     protected $table = 'donation_types';
 
+    public function getRouteKeyName(): string
+    {
+        return 'uuid';
+    }
+
     public function organization()
     {
         return $this->belongsTo(Organization::class);

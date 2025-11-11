@@ -15,6 +15,11 @@ class StaffMember extends Model implements HasMedia
 
     protected $table = 'staff_members';
 
+    public function getRouteKeyName(): string
+    {
+        return 'uuid';
+    }
+
     public function organization()
     {
         return $this->belongsTo(Organization::class);

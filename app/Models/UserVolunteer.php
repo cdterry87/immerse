@@ -18,6 +18,11 @@ class UserVolunteer extends Authenticatable
 
     protected $hidden = ['password', 'remember_token'];
 
+    public function getRouteKeyName(): string
+    {
+        return 'uuid';
+    }
+
     public function organizations()
     {
         return $this->belongsToMany(Organization::class, 'organizations_volunteers');
