@@ -10,7 +10,7 @@ class CustomPathGenerator implements PathGenerator
     public function getPath(Media $media): string
     {
         $model = $media->model;
-        $basePath = 'organization';
+        $basePath = 'organizations';
 
         if (method_exists($model, 'getCustomPathSegment')) {
             $basePath = $model->getCustomPathSegment();

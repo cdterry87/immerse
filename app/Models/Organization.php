@@ -92,6 +92,6 @@ class Organization extends Model implements HasMedia
 
     public function getCustomPathSegment(): string
     {
-        return "organization/{$this->uuid}/images";
+        return "organizations/{$this->uuid}/images";
     }
 }

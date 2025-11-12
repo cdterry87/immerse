@@ -27,4 +27,9 @@ class Location extends Model
     {
         return $this->hasMany(Event::class);
     }
+
+    public function getCustomPathSegment(): string
+    {
+        return "organizations/{$this->organization->uuid}/locations/{$this->uuid}";
+    }
 }

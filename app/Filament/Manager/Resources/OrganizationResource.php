@@ -102,4 +102,12 @@ class OrganizationResource extends Resource
             'edit' => Pages\EditOrganization::route('/{record}/edit'),
         ];
     }
+
+    public static function getEloquentQuery(): Builder
+    {
+        // Managers should only see locations belonging to their organization
+        $user = auth('manager')->user();
+
+        return parent::getEloquentQuery()->where('id', $user->organization_id ?? 0);
+    }
 }
