@@ -16,7 +16,7 @@ use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 class GroupResource extends Resource
 {
     protected static ?string $model = Group::class;
-    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-group';
     protected static ?string $navigationGroup = 'Organization Management';
     protected static ?string $slug = 'groups';
     protected static ?string $label = 'Group';

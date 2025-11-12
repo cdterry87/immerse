@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid')->unique();
             $table->foreignId('organization_id')->constrained()->cascadeOnDelete();
-            $table->string('name');
+            $table->string('title');
             $table->text('description')->nullable();
             $table->timestamps();
         });
@@ -35,16 +35,8 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid')->unique();
             $table->foreignId('organization_id')->constrained()->cascadeOnDelete();
-            $table->string('name');
+            $table->string('title');
             $table->text('description')->nullable();
-            $table->timestamps();
-        });
-
-        Schema::create('media_gallery_items', function (Blueprint $table) {
-            $table->id();
-            $table->uuid('uuid')->unique();
-            $table->foreignId('media_gallery_id')->constrained()->cascadeOnDelete();
-            $table->string('caption')->nullable();
             $table->timestamps();
         });
     }
@@ -54,7 +46,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('media_gallery_items');
         Schema::dropIfExists('media_galleries');
         Schema::dropIfExists('media_series_items');
         Schema::dropIfExists('media_series');
