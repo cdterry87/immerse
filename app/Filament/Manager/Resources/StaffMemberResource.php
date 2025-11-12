@@ -2,28 +2,61 @@
 
 namespace App\Filament\Manager\Resources;
 
-use App\Filament\Manager\Resources\StaffMemberResource\Pages;
-use App\Filament\Manager\Resources\StaffMemberResource\RelationManagers;
 use App\Models\StaffMember;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Manager\Resources\StaffMemberResource\Pages;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 
 class StaffMemberResource extends Resource
 {
     protected static ?string $model = StaffMember::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
+    protected static ?string $navigationLabel = 'Staff Members';
+    protected static ?string $pluralLabel = 'Staff Members';
+    protected static ?string $navigationGroup = 'Organization Management';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Section::make('Staff Information')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->label('Full Name')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('title')
+                            ->label('Title / Position')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('email')
+                            ->label('Email Address')
+                            ->email()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('phone')
+                            ->label('Phone Number')
+                            ->maxLength(50),
+                    ])
+                    ->columns(2),
+
+                Forms\Components\Section::make('Photo')
+                    ->schema([
+                        SpatieMediaLibraryFileUpload::make('photo')
+                            ->collection('staff')
+                            ->label('Staff Photo')
+                            ->image()
+                            ->imagePreviewHeight('200')
+                            ->openable()
+                            ->downloadable()
+                            ->maxSize(2048)
+                            ->columnSpanFull(),
+                    ]),
             ]);
     }
 
@@ -31,26 +64,30 @@ class StaffMemberResource extends Resource
     {
         return $table
             ->columns([
-                //
-            ])
-            ->filters([
-                //
+                SpatieMediaLibraryImageColumn::make('photo')
+                    ->collection('staff_photos')
+                    ->label('Photo'),
+                Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
+                Tables\Columns\TextColumn::make('title')->sortable(),
+                Tables\Columns\TextColumn::make('email')->sortable(),
+                Tables\Columns\TextColumn::make('phone'),
+                Tables\Columns\TextColumn::make('created_at')->dateTime()->label('Added'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+            ->defaultSort('created_at', 'desc');
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->forManager();
     }
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

@@ -2,19 +2,14 @@
 
 namespace App\Filament\Manager\Resources\EventResource\Pages;
 
-use App\Filament\Manager\Resources\EventResource;
-use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Str;
+use Filament\Resources\Pages\CreateRecord;
+use App\Traits\AssignsOrganizationOnCreate;
+use App\Filament\Manager\Resources\EventResource;
 
 class CreateEvent extends CreateRecord
 {
+    use AssignsOrganizationOnCreate;
+
     protected static string $resource = EventResource::class;
-
-    protected function mutateFormDataBeforeCreate(array $data): array
-    {
-        $data['uuid'] = Str::uuid()->toString();
-        $data['organization_id'] = auth('manager')->user()->organization_id;
-
-        return $data;
-    }
 }

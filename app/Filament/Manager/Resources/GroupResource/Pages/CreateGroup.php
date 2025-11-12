@@ -2,11 +2,14 @@
 
 namespace App\Filament\Manager\Resources\GroupResource\Pages;
 
-use App\Filament\Manager\Resources\GroupResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
+use App\Traits\AssignsOrganizationOnCreate;
+use App\Filament\Manager\Resources\GroupResource;
 
 class CreateGroup extends CreateRecord
 {
+    use AssignsOrganizationOnCreate;
+
     protected static string $resource = GroupResource::class;
 }
