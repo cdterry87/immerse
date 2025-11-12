@@ -25,7 +25,6 @@ class VolunteerPanelProvider extends PanelProvider
         return $panel
             ->id('volunteer')
             ->authGuard('volunteer')
-            ->authMiddleware(['auth:volunteer'])
             ->path('volunteer')
             ->authPasswordBroker('volunteers')
             ->login()

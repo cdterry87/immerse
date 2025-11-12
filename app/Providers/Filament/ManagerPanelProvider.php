@@ -28,7 +28,6 @@ class ManagerPanelProvider extends PanelProvider
         return $panel
             ->id('manager')
             ->authGuard('manager')
-            ->authMiddleware(['auth:manager'])
             ->path('manager')
             ->authPasswordBroker('managers')
             ->login()

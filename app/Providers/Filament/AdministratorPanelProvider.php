@@ -25,7 +25,6 @@ class AdministratorPanelProvider extends PanelProvider
         return $panel
             ->id('administrator')
             ->authGuard('administrator')
-            ->authMiddleware(['auth:administrator'])
             ->path('administrator')
             ->authPasswordBroker('administrators')
             ->login()

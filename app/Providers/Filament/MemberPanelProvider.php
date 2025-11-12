@@ -26,7 +26,6 @@ class MemberPanelProvider extends PanelProvider
             ->default()
             ->id('member')
             ->authGuard('member')
-            ->authMiddleware(['auth:member'])
             ->path('member')
             ->authPasswordBroker('members')
             ->login()

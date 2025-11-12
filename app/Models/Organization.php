@@ -15,11 +15,6 @@ class Organization extends Model implements HasMedia
 
     protected $table = 'organizations';
 
-    public function getRouteKeyName(): string
-    {
-        return 'uuid';
-    }
-
     public function managers()
     {
         return $this->hasMany(UserManager::class);
