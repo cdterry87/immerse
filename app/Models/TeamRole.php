@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\BelongsToOrganization;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class TeamRole extends Model
 {
-    use HasFactory;
+    use HasFactory, BelongsToOrganization;
 
     protected $guarded = [];
 
