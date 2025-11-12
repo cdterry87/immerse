@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\HasMedia;
+use App\Traits\BelongsToOrganization;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class DonationType extends Model
+class DonationType extends Model implements HasMedia
 {
+    use InteractsWithMedia, BelongsToOrganization;
     use HasFactory;
 
     protected $guarded = [];

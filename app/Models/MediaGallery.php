@@ -25,9 +25,4 @@ class MediaGallery extends Model implements HasMedia
     {
         return $this->belongsTo(Organization::class);
     }
-
-    public function items()
-    {
-        return $this->hasMany(MediaGalleryItem::class);
-    }
 }
