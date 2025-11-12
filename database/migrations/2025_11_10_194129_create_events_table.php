@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('location_id')->nullable()->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->date('date');
-            $table->time('time')->nullable();
+            $table->datetime('starts_at');
+            $table->datetime('ends_at');
             $table->timestamps();
         });
     }
