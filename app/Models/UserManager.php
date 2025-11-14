@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use App\Traits\BelongsToOrganization;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class UserManager extends Authenticatable
 {
+    use HasRoles;
+    use BelongsToOrganization;
     use HasFactory, Notifiable;
 
     protected $guard = 'manager';

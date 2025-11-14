@@ -3,10 +3,8 @@
 namespace App\Filament\Manager\Resources\DonationResource\Pages;
 
 use App\Filament\Manager\Resources\DonationResource;
-use Filament\Actions;
-use Filament\Resources\Pages\CreateRecord;
 
-class CreateDonation extends CreateRecord
+class ViewDonation extends \Filament\Resources\Pages\ViewRecord
 {
     protected static string $resource = DonationResource::class;
 }

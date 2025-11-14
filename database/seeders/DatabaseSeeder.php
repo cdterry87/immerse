@@ -10,11 +10,13 @@ use App\Models\Organization;
 use App\Models\TeamVolunteer;
 use App\Models\UserVolunteer;
 use Illuminate\Database\Seeder;
+use App\Enums\ManagerPermission;
 use App\Models\TeamVolunteerRole;
 use App\Models\UserAdministrator;
 use App\Models\OrganizationMember;
 use Illuminate\Support\Facades\Hash;
 use App\Models\OrganizationVolunteer;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
@@ -26,6 +28,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->seedManagerPermissions();
+
         // Create an administrator
         UserAdministrator::factory()->create([
             'name' => 'Admin User',
@@ -96,5 +100,15 @@ class DatabaseSeeder extends Seeder
             'organization_id' => $organization->id,
             'user_member_id' => $member->id,
         ]);
+    }
+
+    private function seedManagerPermissions(): void
+    {
+        foreach (ManagerPermission::cases() as $permission) {
+            Permission::firstOrCreate([
+                'name' => $permission->value,
+                'guard_name' => 'manager',
+            ]);
+        }
     }
 }
